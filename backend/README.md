@@ -1,20 +1,18 @@
-### Outline major learnings, including:
-### Key technologies covered:
-### Python, Django, REST APIs, GraphQL, Docker, CI/CD
-### Important backend development concepts:
-### Database Design, Asynchronous Programming, Caching Strategies
-### Challenges faced and solutions implemented
-### Best practices and personal takeaways
-
------------------------------------------------------------------------------------------------------------------------------------
-
 # alx-project-nexus: Job Board 
 
+## Backend
+Real-World Application
+This project prepares developers to build robust backend systems for platforms requiring complex role management and efficient data retrieval. 
+Participants gain experience with: 
+- Role-based access control and secure authentication. 
+- Designing efficient database schemas. 
+- Optimizing query performance for large datasets.
+
 ### Overview
-The job board facilitates job postings, role-based access control, and efficient job search features. It integrates advanced database optimization and responsive, user friendly user interface.
+The backend facilitates job postings, role-based access control, and efficient job search features. It integrates advanced database optimization and comprehensive API documentation.
 
 ### Project Goals
-The primary objectives of the job board job board are:
+The primary objectives of the job board backend are:
 
 API Development. Build APIs for managing job postings, categories, and applications.
 Access Control. Implement role-based access control for admins and users.
@@ -42,30 +40,17 @@ Database Efficiency. Optimize job search with advanced query indexing.
 ```
 roadTrip_planner/
 │
-├── job board/      # Django
+├── backend/      # Django
 └── frontend/     # React + TypeScript app
 ```
 
 ## Getting Started
 
-### job board
-1. `cd job board`
+### Backend
+1. `cd backend`
 2. `python3 -m venv venv && source venv/bin/activate`
 3. `pip install -r requirements.txt` (create this file with your dependencies)
 4. Set up your PostgreSQL database and configure `config/settings.py`
 5. `python manage.py migrate`
 6. `python manage.py runserver`
 
-### Frontend
-1. `cd frontend`
-2. `npm install`
-3. `npm run dev`
-
-## How to Contribute.
-Feel free to fork this project, modify and use it anyway you like.
-### How to do branch branching :
-- main – production-ready code
-- develop – ongoing development
-- feature/* – new features in progress
-- release/* – preparation for production releases
-- hotfix/* – critical bug fixes on the main branch
