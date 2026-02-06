@@ -43,6 +43,10 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "apps.authentication",
     "apps.jobs",
+    "apps.applications",
+    "apps.notifications",
+    "apps.profiles",
+    "apps.search",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS
