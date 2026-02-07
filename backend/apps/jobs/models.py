@@ -1,8 +1,8 @@
 # models.py
 from django.db import models
-from profiles.models import Profile
+from apps.profiles.models import Profile
 
-from authentication.models import User
+from apps.authentication.models import User
 from .custom_model import SoftDeleteModel
 
 

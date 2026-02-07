@@ -1,14 +1,22 @@
-
 import abc
 
 from django.http import HttpResponse
 from elasticsearch_dsl import Q
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.views import APIView
-from jobs.document import UserDocument, SkillsDocument, JobDetailDocument, CategoryDocument
+from apps.jobs.document import (
+    UserDocument,
+    SkillsDocument,
+    JobDetailDocument,
+    CategoryDocument,
+)
 
-from jobs.serializers import SkillSerializer, JobDetailSerializer, CategorySerializer
-from authentication.serializers import   UserRegistrationSerializer
+from apps.jobs.serializers import (
+    SkillSerializer,
+    JobDetailSerializer,
+    CategorySerializer,
+)
+from apps.authentication.serializers import UserRegistrationSerializer
 
 
 class PaginatedElasticSearchAPIView(APIView, LimitOffsetPagination):
@@ -17,9 +25,7 @@ class PaginatedElasticSearchAPIView(APIView, LimitOffsetPagination):
 
     @abc.abstractmethod
     def generate_q_expression(self, query):
-        
-        """This method should be overridden and return a Q() expression.
-        """
+        """This method should be overridden and return a Q() expression."""
 
     def get(self, request, query):
         try:
@@ -40,28 +46,31 @@ class PaginatedElasticSearchAPIView(APIView, LimitOffsetPagination):
 
 
 class SearchUsers(PaginatedElasticSearchAPIView):
-    serializer_class =UserRegistrationSerializer
+    serializer_class = UserRegistrationSerializer
     document_class = UserDocument
 
     def generate_q_expression(self, query):
-        return Q('bool',
-                    should=[
-                        Q('match',role=query),
-                        Q('match', first_name=query),
-                        Q('match', last_name=query),
-                    ], minimum_should_match=1)
+        return Q(
+            "bool",
+            should=[
+                Q("match", role=query),
+                Q("match", first_name=query),
+                Q("match", last_name=query),
+            ],
+            minimum_should_match=1,
+        )
 
 
 class SearchCategories(PaginatedElasticSearchAPIView):
     serializer_class = CategorySerializer
     document_class = CategoryDocument
-    
+
     def generate_q_expression(self, query):
         return Q(
-            'multi_match',
+            "multi_match",
             query=query,
-            fields=['title', 'position', 'location'],
-            fuzziness='auto'
+            fields=["title", "position", "location"],
+            fuzziness="auto",
         )
 
 
@@ -71,22 +80,12 @@ class SearchJobDetail(PaginatedElasticSearchAPIView):
 
     def generate_q_expression(self, query):
         return Q(
-                'multi_match', query=query,
-                fields=[
-                    'job_title',
-                    'job_detail',
-                    'job_level',
-
-                    
-                    
-                ], fuzziness='auto')
-    
-
-
-
-
-
-
-
-
-
+            "multi_match",
+            query=query,
+            fields=[
+                "job_title",
+                "job_detail",
+                "job_level",
+            ],
+            fuzziness="auto",
+        )

@@ -7,9 +7,9 @@ from rest_framework import status
 # from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.exceptions import ValidationError
-from applications.serializers import JobApplicationSerializer
+from apps.applications.serializers import JobApplicationSerializer
 
-from applications.models import JobApplication
+from apps.applications.models import JobApplication
 
 
 class JobApplicationListCreateView(generics.ListCreateAPIView):

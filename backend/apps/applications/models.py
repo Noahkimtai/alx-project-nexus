@@ -1,9 +1,7 @@
 from django.db import models
-from authentication.models import User
 
-from jobs.models import Category
-
-# Create your models here.
+from apps.jobs.models import Category
+from apps.authentication.models import User
 
 
 class JobApplication(models.Model):

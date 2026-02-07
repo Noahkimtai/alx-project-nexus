@@ -2,7 +2,7 @@
 from django.db import models
 from django.utils import timezone
 
-from authentication.models import User
+# from authentication.models import User
 
 
 class SoftDeleteManager(models.Manager):

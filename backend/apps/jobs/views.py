@@ -7,8 +7,8 @@ from rest_framework import status
 # from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from jobs.models import Category, JobDetail, Skill, Responsibility, Qualification
-from jobs.serializers import (
+from apps.jobs.models import Category, JobDetail, Skill, Responsibility, Qualification
+from apps.jobs.serializers import (
     CategorySerializer,
     JobDetailSerializer,
     SkillSerializer,

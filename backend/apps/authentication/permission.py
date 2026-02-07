@@ -1,8 +1,6 @@
 from rest_framework.permissions import BasePermission
-from rest_framework.response import Response
-from rest_framework import status
 
-from authentication.models import User
+# from authentication.models import User
 
 
 class RolePermission(BasePermission):

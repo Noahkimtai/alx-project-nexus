@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
-from applications.models import JobApplication
+from apps.applications.models import JobApplication
 
-# from  jobs.serializers import CategorySerializer
+# from  apps.jobs.serializers import CategorySerializer
 
 
 class JobApplicationSerializer(serializers.ModelSerializer):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from applications.serializers import JobApplicationSerializer
+from apps.applications.serializers import JobApplicationSerializer
 
 
 from .models import Category, JobDetail, Skill, Responsibility, Qualification

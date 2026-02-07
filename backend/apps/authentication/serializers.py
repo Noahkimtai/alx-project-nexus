@@ -1,13 +1,13 @@
-from profiles.serializers import ProfileSerializer
-from applications.serializers import JobApplicationSerializer
-from jobs.models import Skill
-from jobs.serializers import SkillSerializer, CategorySerializer
-from .models import User
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 from django.utils import timezone
 from django.contrib.auth.password_validation import validate_password
+
+# from profiles.serializers import ProfileSerializer
+from apps.applications.serializers import JobApplicationSerializer
+from apps.jobs.serializers import CategorySerializer
+from .models import User
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
