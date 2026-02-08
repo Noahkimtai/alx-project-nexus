@@ -1,13 +1,3 @@
-### Outline major learnings, including:
-### Key technologies covered:
-### Python, Django, REST APIs, GraphQL, Docker, CI/CD
-### Important backend development concepts:
-### Database Design, Asynchronous Programming, Caching Strategies
-### Challenges faced and solutions implemented
-### Best practices and personal takeaways
-
------------------------------------------------------------------------------------------------------------------------------------
-
 # alx-project-nexus: Job Board 
 
 ### Overview
@@ -40,9 +30,9 @@ Database Efficiency. Optimize job search with advanced query indexing.
 
 ## Project Structure
 ```
-roadTrip_planner/
+job-board/
 │
-├── job board/      # Django
+├── backend/      # Django
 └── frontend/     # React + TypeScript app
 ```
 
@@ -69,3 +59,8 @@ Feel free to fork this project, modify and use it anyway you like.
 - feature/* – new features in progress
 - release/* – preparation for production releases
 - hotfix/* – critical bug fixes on the main branch
+
+### Important backend development concepts:
+### Database Design, Asynchronous Programming, Caching Strategies
+### Challenges faced and solutions implemented
+### Best practices and personal takeaways

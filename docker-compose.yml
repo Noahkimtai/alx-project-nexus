@@ -5,11 +5,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: trip-planner-backend
+    container_name: job-board-backend
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@db:${DATABASE_PORT}/trip-planner
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@db:${DATABASE_PORT}/job-board
       REDIS_URL: ${REDIS_URL}
     volumes:
       - ./backend:/app
@@ -19,12 +19,12 @@ services:
       redis:
         condition: service_started
     networks:
-      - trip_network
-    profiles: ["backend"]
+      - job_board_network
+    # profiles: ["backend"]
 
   tests:
     env_file:
-        - .env        
+        - .env
     build:
         context: ./backend
     volumes:
@@ -48,7 +48,7 @@ services:
     env_file:
       - .env
     image: postgres:15
-    container_name: trip-planner-db
+    container_name: job-board-db
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -58,25 +58,25 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d trip-planner"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d job-board"]
       interval: 5s
       timeout: 5s
       retries: 5
     networks:
-      - trip_network
+      - job_board_network
 
   redis:
     image: redis:7
-    container_name: trip-planner-redis
+    container_name: job-board-redis
     volumes:
       - redis_data:/data
     networks:
-      - trip_network
+      - job_board_network
 
 volumes:
   postgres_data:
   redis_data:
 
 networks:
-  trip_network:
+  job_board_network:
     driver: bridge
