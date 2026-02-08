@@ -195,6 +195,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 ALLOWED_HOSTS = [
+    "alx-project-nexus-68df.onrender.com",
     "project.onrender.com",
     "localhost",
     "127.0.0.1",
