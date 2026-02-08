@@ -2,12 +2,15 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 # from jobs.document import JobDocument
 # from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 
 from apps.jobs.models import Category, JobDetail, Skill, Responsibility, Qualification
+from apps.jobs.pagination import SmallResultsSetPagination
 from apps.jobs.serializers import (
     CategorySerializer,
     JobDetailSerializer,
@@ -15,8 +18,6 @@ from apps.jobs.serializers import (
     ResponsibilitySerializer,
     QualificationSerializer,
 )
-
-from rest_framework import generics
 
 
 class CategorySoftDeleteView(generics.GenericAPIView):
@@ -42,6 +43,11 @@ class CategoryRestoreView(generics.GenericAPIView):
 class CategoriesListCreateAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all().prefetch_related("job_details")
     serializer_class = CategorySerializer
+    pagination_class = SmallResultsSetPagination
+
+    @method_decorator(cache_page(60))
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
