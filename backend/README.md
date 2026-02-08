@@ -54,3 +54,6 @@ roadTrip_planner/
 5. `python manage.py migrate`
 6. `python manage.py runserver`
 
+### Data Modelling
+![alt text](image.png)
+

@@ -9,7 +9,6 @@ from django.utils import timezone
 from .manager import CustomUserManager
 
 
-# Create your models here.
 class User(AbstractBaseUser, PermissionsMixin):
 
     # These fields tie to the roles!
@@ -51,16 +50,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
-
-    # def type_to_string(self):
-    #     if self.type == 'UN':
-    #         return 'Unspecified'
-    #     elif self.type == 'TU':
-    #         return 'Tutorial'
-    #     elif self.type == 'RS':
-    #         return 'Research'
-    #     elif self.type == 'RW':
-    #         return 'Review'
 
     def __str__(self):
         return self.email

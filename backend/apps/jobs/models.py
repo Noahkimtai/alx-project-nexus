@@ -1,4 +1,3 @@
-# models.py
 from django.db import models
 from apps.profiles.models import Profile
 
